@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PagerIndicator -->
+    <declare-styleable name="PagerIndicator">
+        <attr name="margin" format="integer|reference" />
+        <attr name="radius" format="integer|reference" />
+        <attr name="selectedColor" format="color|reference" />
+        <attr name="unselectedColor" format="color|reference" />
+    </declare-styleable>
+
+    <!-- ImageSliderLayout -->
+    <declare-styleable name="PageSliderView">
+        <attr name="aspectRatio" format="float" />
+        <attr name="autoSlideDuration" format="integer|reference" />
+        <attr name="autoSlide" format="boolean" />
+    </declare-styleable>
+</resources>

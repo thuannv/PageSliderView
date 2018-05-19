@@ -1,0 +1,20 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    apply from: 'dependencies.gradle'
+
+    addRepositories(repositories)
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.2'
+    }
+}
+
+allprojects {
+    addRepositories(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

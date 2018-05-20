@@ -1,5 +1,5 @@
 # PageSliderView
-A library which is supported infinitely page sliding for ViewPager. This PagerSliderView is a general page sliding that you use it for sliding image or other customized sliding pages.
+A library which is supported infinite sliding for ViewPager. This PagerSliderView is a general page sliding that you use it for sliding image or other customized sliding pages.
 
 ## Getting started
 

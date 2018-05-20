@@ -4,20 +4,35 @@
 A library which is supported infinite sliding for ViewPager. This PagerSliderView is a general page sliding that you use it for sliding image or other customized sliding pages.
 
 ## Getting started
+In your root build.gradle file at the end of repositories:
+```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
 
+In your app build.gradle file, add the dependency:
+```gradle
+dependencies {
+    implementation 'com.github.thuannv:PageSliderView:v1.0'
+}
+```
 In your xml layout file
 ```xml
-    <!-- Image Slider -->
-    <thuannv.pageslider.PageSliderView
-        android:id="@+id/image_slider"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:autoSlide="true"
-        app:autoSlideDuration="4000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+<!-- Image Slider -->
+<thuannv.pageslider.PageSliderView
+    android:id="@+id/image_slider"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:autoSlide="true"
+    app:autoSlideDuration="4000"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
 ```
 Creating an ViewPager Adapter, such as ImageSliderAdapter
 ```java

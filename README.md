@@ -3,6 +3,8 @@
 # PageSliderView
 A library which is supported infinite sliding for ViewPager. This PagerSliderView is a general page sliding that you use it for sliding image or other customized sliding pages.
 
+![demo.webp](assets/demo.webp)
+
 ## Getting started
 In your root build.gradle file at the end of repositories:
 ```gradle

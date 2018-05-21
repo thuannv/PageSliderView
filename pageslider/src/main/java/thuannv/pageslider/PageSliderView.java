@@ -8,7 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import java.lang.ref.WeakReference;
@@ -44,18 +46,22 @@ public class PageSliderView extends FrameLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        LayoutInflater.from(context).inflate(R.layout.slider_layout, this);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        inflater.inflate(R.layout.slider_layout, this);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mPagerIndicator = (PagerIndicator) findViewById(R.id.pagerIndicator);
-
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PageSliderView);
         try {
             mAspectRatio = a.getFloat(R.styleable.PageSliderView_aspectRatio, 0.32f);
             mIsAutoSlideEnabled = a.getBoolean(R.styleable.PageSliderView_autoSlide, false);
             mAutoSlideDuration = a.getInt(R.styleable.PageSliderView_autoSlideDuration, (int) DEFAULT_SLIDE_DURATION);
+
+            int pagerIndicatorLayoutId = a.getResourceId(R.styleable.PageSliderView_pagerIndicatorLayoutId, R.layout.slider_page_indicator_layout);
+            View indicatorLayout = inflater.inflate(pagerIndicatorLayoutId, this);
+            mPagerIndicator = (PagerIndicator) indicatorLayout.findViewById(R.id.page_slider_view_pager_indicator);
         } finally {
             a.recycle();
         }
+
     }
 
 
@@ -81,10 +87,11 @@ public class PageSliderView extends FrameLayout {
 
     public void setAdapter(PagerAdapter adapter) {
         mViewPager.setAdapter(adapter);
-        mPagerIndicator.setViewPager(mViewPager);
-
-        int count = PagerAdapterHelper.getCount(adapter);
-        mPagerIndicator.setVisibility(count > 1 ? VISIBLE : GONE);
+        if (mPagerIndicator != null) {
+            int count = PagerAdapterHelper.getCount(adapter);
+            mPagerIndicator.setViewPager(mViewPager);
+            mPagerIndicator.setVisibility(count > 1 ? VISIBLE : GONE);
+        }
     }
 
     public void startAutoSlide() {

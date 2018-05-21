@@ -2,8 +2,8 @@
 <resources>
     <!-- PagerIndicator -->
     <declare-styleable name="PagerIndicator">
-        <attr name="margin" format="integer|reference" />
-        <attr name="radius" format="integer|reference" />
+        <attr name="margin" format="dimension|reference" />
+        <attr name="radius" format="dimension|reference" />
         <attr name="selectedColor" format="color|reference" />
         <attr name="unselectedColor" format="color|reference" />
     </declare-styleable>
@@ -13,5 +13,6 @@
         <attr name="aspectRatio" format="float" />
         <attr name="autoSlideDuration" format="integer|reference" />
         <attr name="autoSlide" format="boolean" />
+        <attr name="pagerIndicatorLayoutId" format="reference" />
     </declare-styleable>
 </resources>

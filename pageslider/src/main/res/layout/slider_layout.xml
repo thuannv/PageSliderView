@@ -12,11 +12,4 @@
         android:layout_height="match_parent"
         />
 
-    <thuannv.pageslider.PagerIndicator
-        android:id="@+id/pagerIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="4dp"
-        />
 </merge>

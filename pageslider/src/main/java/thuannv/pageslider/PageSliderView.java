@@ -43,7 +43,7 @@ public class PageSliderView extends FrameLayout {
         init(context, attrs);
     }
 
-    public void init(Context context, AttributeSet attrs) {
+    private void init(Context context, AttributeSet attrs) {
         LayoutInflater.from(context).inflate(R.layout.slider_layout, this);
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mPagerIndicator = (PagerIndicator) findViewById(R.id.pagerIndicator);
@@ -57,6 +57,7 @@ public class PageSliderView extends FrameLayout {
             a.recycle();
         }
     }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -82,11 +83,8 @@ public class PageSliderView extends FrameLayout {
         mViewPager.setAdapter(adapter);
         mPagerIndicator.setViewPager(mViewPager);
 
-        if (adapter instanceof InfinitePagerAdapter && ((InfinitePagerAdapter) adapter).getActualCount() < 2) {
-            mPagerIndicator.setVisibility(GONE);
-        } else {
-            mPagerIndicator.setVisibility(VISIBLE);
-        }
+        int count = PagerAdapterHelper.getCount(adapter);
+        mPagerIndicator.setVisibility(count > 1 ? VISIBLE : GONE);
     }
 
     public void startAutoSlide() {

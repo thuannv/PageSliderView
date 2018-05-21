@@ -96,38 +96,16 @@ public class PagerIndicator extends View {
     public void setViewPager(ViewPager viewPager) {
         mViewPager = viewPager;
         mViewPager.addOnPageChangeListener(mOnPageChangeListener);
-        PagerAdapter adapter = mViewPager.getAdapter();
-        if (adapter != null) {
-            if (adapter instanceof InfinitePagerAdapter) {
-                InfinitePagerAdapter infiniteAdapter = (InfinitePagerAdapter) adapter;
-                mCount = infiniteAdapter.getActualCount();
-                PagerAdapter originalAdapter = infiniteAdapter.unwrap();
-                if (originalAdapter != null) {
-                    originalAdapter.registerDataSetObserver(mDataSetObserver);
-                }
-            } else {
-                mCount = adapter.getCount();
-                adapter.registerDataSetObserver(mDataSetObserver);
-            }
+        final PagerAdapter adapter = mViewPager.getAdapter();
+        PagerAdapterHelper.registerDataSetObserver(adapter, mDataSetObserver);
+        mCount = PagerAdapterHelper.getCount(adapter);
+        if (mCount > 0) {
             requestLayout();
         }
     }
 
     private void updateCount() {
-        if (mViewPager == null) {
-            mCount = 0;
-        } else {
-            PagerAdapter adapter = mViewPager.getAdapter();
-            if (adapter != null) {
-                if (adapter instanceof InfinitePagerAdapter) {
-                    mCount = ((InfinitePagerAdapter) adapter).getActualCount();
-                } else {
-                    mCount = adapter.getCount();
-                }
-            } else {
-                mCount = 0;
-            }
-        }
+        mCount = (mViewPager == null) ? 0 : PagerAdapterHelper.getCount(mViewPager.getAdapter());
         requestLayout();
     }
 

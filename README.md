@@ -19,7 +19,7 @@ allprojects {
 In your app build.gradle file, add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.thuannv:PageSliderView:v1.0'
+    implementation 'com.github.thuannv:PageSliderView:v1.1'
 }
 ```
 In your xml layout file
